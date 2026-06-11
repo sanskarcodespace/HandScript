@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es2021": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "import"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "import/order": ["error", { "alphabetize": { "order": "asc" } }]
+  },
+  "overrides": [
+    {
+      "files": ["client/**/*.ts", "client/**/*.tsx"],
+      "env": {
+        "browser": true
+      },
+      "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:jsx-a11y/recommended",
+        "next/core-web-vitals"
+      ]
+    }
+  ]
+}
