@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from './routes/authRoutes';
+import uploadRoutes from './routes/uploadRoutes';
 import { apiLimiter } from './middleware/rateLimitMiddleware';
 import { ApiError } from './utils/ApiError';
 import { logger } from './utils/logger';
@@ -35,6 +36,7 @@ app.use('/api', apiLimiter);
 
 // Mount Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // Health check
 app.get('/health', (req: Request, res: Response) => {
