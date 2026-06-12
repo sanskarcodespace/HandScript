@@ -1,16 +1,30 @@
-/**
- * Root layout for the application.
- * Will contain ThemeProvider, AuthProvider, and ToastProvider.
- */
 import './globals.css';
-import { ReactNode } from 'react';
+import { Inter } from 'next/font/google';
+import { ThemeProvider } from '../components/providers/ThemeProvider';
+import { QueryProvider } from '../components/providers/QueryProvider';
+import { ToastProvider } from '../components/providers/ToastProvider';
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata = {
+  title: 'HandNote AI',
+  description: 'Upload questions. Get handwritten answers. Instantly.',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body>
-        {/* TODO: Add Providers here */}
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <QueryProvider>
+            {children}
+            <ToastProvider />
+          </QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
